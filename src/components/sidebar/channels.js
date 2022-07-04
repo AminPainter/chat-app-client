@@ -1,8 +1,12 @@
+import { useState } from 'react';
 import { Typography, Button } from '@material-tailwind/react';
 
 import Chat from 'components/chat';
+import AddNewChannelForm from 'components/new/channel';
 
 const Channels = () => {
+  const [isAddNewChannelOpen, setAddNewChannelOpen] = useState(false);
+
   return (
     <div className='mt-14 space-y-1'>
       <div className='flex justify-between items-center mb-4 px-2'>
@@ -10,7 +14,10 @@ const Channels = () => {
           channels
         </Typography>
 
-        <Button size='sm' className='!p-2 h-8 w-8'>
+        <Button
+          size='sm'
+          className='!p-2 h-8 w-8'
+          onClick={() => setAddNewChannelOpen(true)}>
           +
         </Button>
       </div>
@@ -18,6 +25,11 @@ const Channels = () => {
       {channels.map(channel => (
         <Chat key={channel.id} variant='channel' {...channel} />
       ))}
+
+      <AddNewChannelForm
+        open={isAddNewChannelOpen}
+        setOpen={setAddNewChannelOpen}
+      />
     </div>
   );
 };

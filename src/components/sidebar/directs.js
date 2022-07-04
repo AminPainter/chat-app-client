@@ -1,10 +1,14 @@
+import { useState } from 'react';
 import { Typography, Button } from '@material-tailwind/react';
 
 import Chat from 'components/chat';
+import AddNewDirectForm from 'components/new/direct';
 
 import testAvatarImg from 'images/avatar.png';
 
 const Directs = () => {
+  const [isAddNewDirectOpen, setAddNewDirectOpen] = useState(false);
+
   return (
     <div className='mt-5 space-y-1'>
       <div className='flex justify-between items-center mb-4 px-2'>
@@ -12,7 +16,10 @@ const Directs = () => {
           direct
         </Typography>
 
-        <Button size='sm' className='!p-2 h-8 w-8'>
+        <Button
+          size='sm'
+          className='!p-2 h-8 w-8'
+          onClick={() => setAddNewDirectOpen(true)}>
           +
         </Button>
       </div>
@@ -20,6 +27,11 @@ const Directs = () => {
       {directs.map(direct => (
         <Chat key={direct.id} {...direct} />
       ))}
+
+      <AddNewDirectForm
+        open={isAddNewDirectOpen}
+        setOpen={setAddNewDirectOpen}
+      />
     </div>
   );
 };
