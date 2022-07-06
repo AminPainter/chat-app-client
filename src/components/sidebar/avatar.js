@@ -3,7 +3,7 @@ import { Typography, Avatar } from '@material-tailwind/react';
 import avatarImg from 'images/avatar.png';
 
 const DashboardAvatar = () => (
-  <div className='flex gap-5 bg-brand-light p-3 mt-10 rounded-xl'>
+  <div className='flex gap-5 bg-brand-light p-3 mt-10 rounded-xl sticky top-0'>
     <Avatar src={avatarImg} />
 
     <div className='flex flex-col justify-center'>
